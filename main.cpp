@@ -18,9 +18,11 @@ bool isPrime(int a){
 
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;//
+    std::cout << "Hello, World please give a natural number to see if it is prime" << std::endl;
+    int n;
+    std::cin >> n;
 
-    printf( "Hello, World! here is a thing:%d",isPrime(21));
+    printf( "Hello, the number you have selected is %d and it is%s prime",n,isPrime(n)?"":" not");
 
 
     return 0;
