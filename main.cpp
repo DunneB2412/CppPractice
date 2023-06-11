@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cmath>
-
+#include "FizBuzz.h"
 
 
 bool isPrime(int a){//no significant information avalable
@@ -70,8 +70,12 @@ int main() {
     std::cout << "\nHow about we find a specific prime, please give a natural number to request that nth prime number" << std::endl;
     std::cin >> n;
 
-    printf( "Hello, the number you have selected is %d and behold %d is your new lucky number",n, findNth(n));
+    printf( "Hello, the number you have selected is %d and behold %d is your new lucky number\n",n, findNth(n));
 
+    size_t i;
+    for(i=1; i<100;i++){//starts at 7 as next bigest prime, only check odd numbers
+        printf( "%s,", fizzBuzzIt(i).c_str());
+    }
 
     return 0;
 }
