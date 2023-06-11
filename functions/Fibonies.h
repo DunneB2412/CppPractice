@@ -9,15 +9,15 @@
 #endif //UNTITLED_FIBONIES_H
 
 int fib(int n){
-    unsigned long xnm1 = 1;
-    unsigned long xnm2 = -1;
-    unsigned long xn = 0;
+    unsigned long long xnm1 = 1;
+    unsigned long long xnm2 = -1;
+    unsigned long long xn = 0;
     size_t i;
     for(i=0; i<n;i++){//iterate over the sequence until xn is for the provided n
-        xn = xnm1+xnm2;
+        xn = xnm1+xnm2; //not shure why but this is acting like an unsigned int. breakes dwoen at f(49) as tyhis should be 4,807,526,976 but max int is 4,294,967,295. why is this...
         xnm2=xnm1;
         xnm1=xn;
-        //printf( "%lu,", xn);
+        printf( "%lu,", xn);
     }
     return xn;
 }
