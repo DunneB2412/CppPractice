@@ -3,6 +3,7 @@
 #include "functions/FizBuzz.h"
 #include "functions/Fibonies.h"
 #include "functions/Prime.h"
+#include "BigInt.h"
 
 
 int main() {
@@ -23,6 +24,13 @@ int main() {
 //    }
 
     printf( "Hello,behold %ull is your new  supper doper lucky number\n",fib(50));
+
+
+    auto *i = new BigMath::BigInt(0x7fffffff);
+    auto *ii = new BigMath::BigInt(4);
+    i->add(i);
+
+    printf( "Hello,behold %s is your new  supper doper lucky number\n",i->to_string().c_str());
 
     return 0;
 }

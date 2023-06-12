@@ -11,7 +11,7 @@ namespace BigMath {
         //if n or c is set, just carry. if v is set, preserve negative.
         static const unsigned int nMask = 0x40000000;
         static const unsigned int cMask = 0x80000000;
-        static const unsigned int valMask = !cMask;
+        static const unsigned int valMask = 0x7fffffff;
 
         int val;
         Element *next;
@@ -24,10 +24,19 @@ namespace BigMath {
 
 
         short add(Element *o, short _c_in);
-
-        Element * getComp2s(){
-            return new Element((val*-1)&valMask);
+        Element * getNext(){
+            return next;
         }
+        void setNext(Element *e){
+            next = e;
+        }
+        int getValue(){
+            return val;
+        }
+
+//        Element * getComp2s(){
+//            return new Element((val*-1)&valMask);
+//        }
     };
 
     class BigInt {
