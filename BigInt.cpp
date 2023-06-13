@@ -36,7 +36,8 @@ namespace BigMath {
         do{
             flags = a->add(b,(flags&4)>>2);
             if(((flags&4)==4||b->getNext()!= nullptr) && a->getNext()== nullptr){//if the carry is set or b has a next, extend the number
-                a->setNext(new Element(0));
+                a->setNext(new Element(0,a, nullptr));
+                end=a->getNext();
             }
             a = a->getNext();
             b = b->getNext()!= nullptr? b->getNext() :new BigMath::Element(0);
@@ -52,11 +53,38 @@ namespace BigMath {
     }
 
     short BigInt::div(BigInt *o) {
+
+
         return 0;
     }
 
     short BigInt::mod(BigInt *o) {
         return 0;
+    }
+
+    void BigInt::bitShift(int s){
+        if(s==0)return;
+        int jumps = s/31;
+        int steps = s%31;
+        while (jumps>0){
+            if(s>0){
+                start = new Element(0, nullptr,start); //stick in a new batch of 31 in at the start
+            }else{
+                start = start->getNext(); //chop of a batch of 31 at the start
+            }
+            jumps--;
+        }
+        if(s>0){
+            start = new Element(0, nullptr,start); //stick one extra batch at the start
+            steps -=31; //change the direction of the shift.
+        }
+
+        int carried = 0;
+        Element act = s>0?
+        do{
+
+        }while();
+        return;
     }
 
     std::string BigInt::to_string() {
@@ -68,4 +96,8 @@ namespace BigMath {
         }while(a!= nullptr);
         return result;
     }
+
+//    std::string dec(){
+//
+//    }
 } // BigMath

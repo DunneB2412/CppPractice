@@ -15,12 +15,14 @@ namespace BigMath {
 
         int val;
         Element *next;
+        Element *prev;
     public:
-        Element(int val, Element *n){
+        Element(int val,Element *p, Element *n){
             this->val = val;
+            this->prev =p;
             this->next = n;
         }
-        explicit Element(int val) : Element(val, nullptr){}
+        explicit Element(int val) : Element(val, nullptr, nullptr){}
 
 
         short add(Element *o, short _c_in);
@@ -40,22 +42,12 @@ namespace BigMath {
     };
 
     class BigInt {
-        static const unsigned int sMask = 0x8000;
-        static const unsigned int zMask = 0x4000;
-        static const unsigned int sizeMask = 0x0FFF;
-
-        [[maybe_unused]] Element *start;
-        short props;
+        Element *start;
+        Element *end;
 
     public:
         BigInt(int init){
-            if(init < 0){
-                props = props | sMask;
-                init = init*-1;
-            }
-            if(init == 0){
-                props = props | zMask;
-            }
+
             start = new Element(init);
         }
         BigInt() : BigInt(0) { }
@@ -66,7 +58,12 @@ namespace BigMath {
         short mul(BigInt *o);
         short div(BigInt *o);
         short mod(BigInt *o);
+        void bitShift(int s);
         std::string to_string();
+
+        Element* getStart(){
+
+        }
 
     };
 
